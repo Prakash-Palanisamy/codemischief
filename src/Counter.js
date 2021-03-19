@@ -8,7 +8,11 @@ const Counter = () => {
     const handleIncrement = () => {
        // console.log(count % 3);
        setCount(count => count + 1);
-       
+
+       if(count >= 50){
+           setCount(0);
+           setResult([]);
+        }
         if(count !== 0 && count % 3 === 0 && count % 5 === 0)
         {
             result.push(count+" is multiple of 3 and 5");
@@ -21,7 +25,6 @@ const Counter = () => {
         {
             result.push(count+" is multiple of 5");
         }
-       
       };
 
      // console.log(result);
@@ -36,12 +39,13 @@ const Counter = () => {
 
                 <h1>Counter Numbers</h1>
                 <div className='result'>
-                      <h3>{count}</h3>
+                <h3>{count}</h3>
+                <button className='btn' onClick={handleIncrement}>Counter</button>
+                <button className='btn' onClick={handleReset}>Reset</button>
                       {result.map((r) => <li>{r}</li>)}
                 </div>
             
-             <button className='btn' onClick={handleIncrement}>Counter</button>
-             <button className='btn' onClick={handleReset}>Reset</button>
+            
             
         </div>
     )
